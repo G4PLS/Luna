@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>Project_Luna</AssemblyName>
+    <AssemblyName>Luna</AssemblyName>
     <Description>My first plugin</Description>
-    <Version>1.0.0</Version>
+    <Version>0.2</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
@@ -20,355 +20,376 @@
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
   </ItemGroup>
 
+
+
+  <ItemGroup>
+    <None Remove="Images\GameLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Assembly-CSharp.dll</HintPath>
+      <HintPath>Lib\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>Lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Cinemachine.dll</HintPath>
+      <HintPath>Lib\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="com.rlabrecque.steamworks.net">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\com.rlabrecque.steamworks.net.dll</HintPath>
+      <HintPath>Lib\com.rlabrecque.steamworks.net.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\DOTween.dll</HintPath>
+      <HintPath>Lib\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Dreamteck.Splines">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Dreamteck.Splines.dll</HintPath>
+      <HintPath>Lib\Dreamteck.Splines.dll</HintPath>
     </Reference>
     <Reference Include="Dreamteck.Utilities">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Dreamteck.Utilities.dll</HintPath>
+      <HintPath>Lib\Dreamteck.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="EZhex1991.EZSoftBone">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\EZhex1991.EZSoftBone.dll</HintPath>
+      <HintPath>Lib\EZhex1991.EZSoftBone.dll</HintPath>
     </Reference>
     <Reference Include="GalaxyCSharp">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\GalaxyCSharp.dll</HintPath>
+      <HintPath>Lib\GalaxyCSharp.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppMono.Security">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppMono.Security.dll</HintPath>
+      <HintPath>Lib\Il2CppMono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>Lib\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Configuration.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Core">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Core.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Core.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Data">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Data.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Data.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Numerics">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Numerics.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Runtime.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Runtime.Serialization">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Xml.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Xml.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppSystem.Xml.Linq">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Il2CppSystem.Xml.Linq.dll</HintPath>
+      <HintPath>Lib\Il2CppSystem.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="JBooth.MicroSplat.Core">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\JBooth.MicroSplat.Core.dll</HintPath>
+      <HintPath>Lib\JBooth.MicroSplat.Core.dll</HintPath>
     </Reference>
     <Reference Include="MeshBakerCore">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MeshBakerCore.dll</HintPath>
+      <HintPath>Lib\MeshBakerCore.dll</HintPath>
     </Reference>
     <Reference Include="MeshDecimator">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MeshDecimator.dll</HintPath>
+      <HintPath>Lib\MeshDecimator.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks.Cinemachine">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.Cinemachine.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks.MMTools">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.MMTools.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.MMTools.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks.NiceVibrations">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.NiceVibrations.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.NiceVibrations.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks.TextMeshPro">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.TextMeshPro.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Feedbacks.URP">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Feedbacks.URP.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Feedbacks.URP.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Tools">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Tools.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Tools.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Tools.Cinemachine">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Tools.Cinemachine.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Tools.Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Tools.Feedbacks">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Tools.Feedbacks.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Tools.Feedbacks.dll</HintPath>
     </Reference>
     <Reference Include="MoreMountains.Tools.TextMeshPro">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\MoreMountains.Tools.TextMeshPro.dll</HintPath>
+      <HintPath>Lib\MoreMountains.Tools.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Rewired_Core.dll</HintPath>
+      <HintPath>Lib\Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Windows">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Rewired_Windows.dll</HintPath>
+      <HintPath>Lib\Rewired_Windows.dll</HintPath>
     </Reference>
     <Reference Include="sc.stylizedwater2.runtime">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\sc.stylizedwater2.runtime.dll</HintPath>
+      <HintPath>Lib\sc.stylizedwater2.runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Addressables">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.Addressables.dll</HintPath>
+      <HintPath>Lib\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Localization">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.Localization.dll</HintPath>
+      <HintPath>Lib\Unity.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.Mathematics.dll</HintPath>
+      <HintPath>Lib\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Polybrush">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.Polybrush.dll</HintPath>
+      <HintPath>Lib\Unity.Polybrush.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.ProBuilder.dll</HintPath>
+      <HintPath>Lib\Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.KdTree">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.ProBuilder.KdTree.dll</HintPath>
+      <HintPath>Lib\Unity.ProBuilder.KdTree.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Poly2Tri">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.ProBuilder.Poly2Tri.dll</HintPath>
+      <HintPath>Lib\Unity.ProBuilder.Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>Lib\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>Lib\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>Lib\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ResourceManager">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.ResourceManager.dll</HintPath>
+      <HintPath>Lib\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>Lib\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\Unity.Timeline.dll</HintPath>
+      <HintPath>Lib\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.dll</HintPath>
+      <HintPath>Lib\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AccessibilityModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AndroidJNIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClothModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ClothModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ClothModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ClusterInputModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ClusterInputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ClusterRendererModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.CrashReportingModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.CrashReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.DirectorModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DSPGraphModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.DSPGraphModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.DSPGraphModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.GameCenterModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GIModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.GIModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.GIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.GridModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.HotReloadModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.HotReloadModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.LocalizationModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.LocalizationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.PerformanceReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ProfilerModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ProfilerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.SpriteShapeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.StreamingModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.StreamingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.SubstanceModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubsystemsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.SubsystemsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.SubsystemsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TextCoreModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TLSModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.TLSModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.TLSModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UI.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsNativeModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UIElementsNativeModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UIElementsNativeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UmbraModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UNETModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityConnectModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityCurlModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityCurlModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityCurlModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityTestProtocolModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.VehiclesModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VirtualTexturingModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.VirtualTexturingModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.VirtualTexturingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VRModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.VRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.WindModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.WindModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.WindModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
-      <HintPath>D:\Steam\steamapps\common\Lunistice\BepInEx\interop\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>Lib\UnityEngine.XRModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;$(OutDir)Project_Luna.dll&quot; &quot;D:\steam\steamapps\common\Lunistice\BepInEx\plugins&quot;" />
+    <Exec Command="copy &quot;$(OutDir)Luna.dll&quot; &quot;D:\steam\steamapps\common\Lunistice\BepInEx\plugins&quot;" />
   </Target>
 </Project>
