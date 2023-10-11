@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Project_Luna
+﻿namespace Luna
 {
     public enum Level
     {

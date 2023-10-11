@@ -1,9 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
-using System;
 
-namespace Project_Luna;
+namespace Luna;
 
 [BepInPlugin(GUID, NAME, VERSION)]
 public class Plugin : BasePlugin

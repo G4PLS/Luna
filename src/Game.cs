@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Project_Luna;
+namespace Luna;
 
 public static class Game
 {
@@ -11,14 +11,17 @@ public static class Game
 
     public static GameState GameState
     {
-        get => Controller.gameState;
+        get => Controller.GetGameState();
         set
         {
             if (Controller != null)
-                Controller.gameState = value;
+                Controller.SetGameState(value);
         }
     }
 
+    public static void Pause(bool pause) => Controller.Pause(pause);
+    public static void CloseResults() => Controller.CloseResults(false);
+    
     [HarmonyPatch(typeof(GameManager), "Start")]
     [HarmonyPostfix]
     private static void GameManager_Start() => Controller = GameManager.Instance;

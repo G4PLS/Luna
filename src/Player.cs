@@ -1,13 +1,8 @@
-﻿using UnityEngine;
-using HarmonyLib;
-using System.Threading;
-using Rewired.Utils.Classes.Utility;
-using System;
-using Rewired.Data;
+﻿using HarmonyLib;
 using KinematicCharacterController;
-using Uri = Il2CppSystem.Uri;
+using UnityEngine;
 
-namespace Project_Luna
+namespace Luna
 {
     //!IMPORTANT! Under Player->attackTrailMesh is the part that collects the cranes
 
