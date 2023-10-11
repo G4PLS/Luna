@@ -1,9 +1,7 @@
-﻿using HarmonyLib;
-using System;
-using Rewired.Dev.Tools;
-using Object = UnityEngine.Object;
+﻿using System;
+using HarmonyLib;
 
-namespace Project_Luna
+namespace Luna
 {
     public static class LevelLoader
     {
