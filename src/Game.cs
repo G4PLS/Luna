@@ -20,8 +20,8 @@ public static class Game
     }
 
     public static void Pause(bool pause) => Controller.Pause(pause);
-    public static void CloseResults() => Controller.CloseResults(false);
-    
+    public static bool IsPaused() => Controller.IsPaused();
+     
     [HarmonyPatch(typeof(GameManager), "Start")]
     [HarmonyPostfix]
     private static void GameManager_Start() => Controller = GameManager.Instance;
