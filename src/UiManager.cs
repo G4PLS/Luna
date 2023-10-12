@@ -59,6 +59,18 @@ public static class UiManager
         }
     }
 
+    public static void RefreshMenus(UIState state)
+    {
+        CurrentUIState = state;
+        foreach (var menu in _uiMenus)
+        {
+            if (menu.Key == state)
+                ChangeMenuState(menu.Value, true);
+            else 
+                ChangeMenuState(menu.Value, false);
+        }
+    }
+    
     private static void ChangeMenuState(object menu, bool state)
     {
         switch (menu)

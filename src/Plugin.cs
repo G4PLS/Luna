@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Luna;
 
@@ -9,7 +11,7 @@ public class Plugin : BasePlugin
 {
     public const string GUID = "com.GAPLS.Luna";
     public const string NAME = "Luna";
-    public const string VERSION = "0.0";
+    public const string VERSION = "0.3";
     public const string AUTHOR = "GAPLS";
 
     public override void Load()
