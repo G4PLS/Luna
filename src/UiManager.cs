@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using HarmonyLib;
 using Il2CppSystem;
+using Il2CppSystem.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Luna;
@@ -12,10 +14,10 @@ public static class UiManager
         Title,
         Mission,
         Options,
-        OptionsGameplay,
-        OptionsGraphics,
-        OptionsAudio,
-        OptionsCamera,
+        OptionsSubGameplay,
+        OptionsSubGraphics,
+        OptionsSubAudio,
+        OptionsSubCamera,
         Profile,
         Results,
         CharacterSelect,
@@ -24,25 +26,21 @@ public static class UiManager
     
     public static UIController Controller { get; private set; }
     private static Dictionary<UIState, object> _uiMenus;
-
-    public static void LockCursor() => Controller.onLockCursor();
-
-    private static UIState _currentUIState; 
+    
+    private static UIState _currentUIState;
+    
     public static UIState CurrentUIState
     {
         get => _currentUIState;
         set
         {
-            if (Controller != null)
-                _currentUIState = value;
+            _currentUIState = value;
+            Console.WriteLine(value.ToString());
         }
     }
-
-    public static void DisableAllMenus()
-    {
-        foreach (var menu in _uiMenus)
-            ChangeMenuState(menu.Value, false);
-    }
+    public static bool EnableUIInput { get; set; } = true;
+    
+    public static void LockCursor() => Controller.onLockCursor();
     
     /// <summary>
     /// Refreshes all the Menus.
@@ -58,7 +56,6 @@ public static class UiManager
                 ChangeMenuState(menu.Value, false);
         }
     }
-
     public static void RefreshMenus(UIState state)
     {
         CurrentUIState = state;
@@ -69,6 +66,11 @@ public static class UiManager
             else 
                 ChangeMenuState(menu.Value, false);
         }
+    }
+    public static void DisableAllMenus()
+    {
+        foreach (var menu in _uiMenus)
+            ChangeMenuState(menu.Value, false);
     }
     
     private static void ChangeMenuState(object menu, bool state)
@@ -111,15 +113,17 @@ public static class UiManager
             {UIState.Title, Controller.titleScreenMenu}, //TITLE SCREEN MENU
             {UIState.Mission, Controller.missionUI}, //MISSION UI
             {UIState.Options, Controller.optionsMenu}, //OPTIONS MENU
-            {UIState.OptionsGameplay, Controller.gameplayMainMenu}, //INGAME MENU
-            {UIState.OptionsGraphics, Controller.graphicsMenu}, //INGAME MENU
-            {UIState.OptionsAudio, Controller.audioMenu}, //INGAME MENU
-            {UIState.OptionsCamera, Controller.gameplayMenu}, //INGAME MENU
+            {UIState.OptionsSubGameplay, Controller.gameplayMainMenu}, //INGAME MENU
+            {UIState.OptionsSubGraphics, Controller.graphicsMenu}, //INGAME MENU
+            {UIState.OptionsSubAudio, Controller.audioMenu}, //INGAME MENU
+            {UIState.OptionsSubCamera, Controller.gameplayMenu}, //INGAME MENU
             {UIState.Profile, Controller.profileMenu}, //PROFILE MENU
             {UIState.Results, Controller.resultsMenu}, //RESULTS MENU
             {UIState.CharacterSelect, Controller.characterSelectMenu}, //CHARACTER SELECT MENU
             {UIState.LevelSelect, Controller.levelSelectMenu}, //LEVEL SELECT MENU
         };
+        
+        Console.WriteLine(Controller.pauseMenu);
         
         var image = new Texture2D(512, 512);
         image.LoadImage(Resource.GameLogo);
@@ -128,18 +132,20 @@ public static class UiManager
         UIController.Instance.gameLogo.overrideSprite = sprite;
     }
 
+    #region Change UI State
+
     [HarmonyPatch(typeof(IngameMenu), "OnEnable")]
     [HarmonyPostfix]
     private static void IngameMenu_OnEnable(IngameMenu __instance)
     {
         if (__instance == Controller.gameplayMainMenu)
-            CurrentUIState = UIState.OptionsGameplay;
+            CurrentUIState = UIState.OptionsSubGameplay;
         else if (__instance == Controller.graphicsMenu)
-            CurrentUIState = UIState.OptionsGraphics;
+            CurrentUIState = UIState.OptionsSubGraphics;
         else if (__instance == Controller.audioMenu)
-            CurrentUIState = UIState.OptionsAudio;
+            CurrentUIState = UIState.OptionsSubAudio;
         else if (__instance == Controller.gameplayMenu)
-            CurrentUIState = UIState.OptionsCamera;
+            CurrentUIState = UIState.OptionsSubCamera;
     }
 
     [HarmonyPatch(typeof(CharacterSelectMenu), "OnEnable")]
@@ -169,4 +175,42 @@ public static class UiManager
     [HarmonyPatch(typeof(LevelSelectMenu), "OnEnable")]
     [HarmonyPostfix]
     private static void LevelSelectMenu_OnEnable() => CurrentUIState = UIState.LevelSelect;
+
+    #endregion
+
+    #region Updating UI
+
+    [HarmonyPatch(typeof(IngameMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool IngameMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(CharacterSelectMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool CharacterSelectMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(TitleScreenMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool TitleScreenMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(OptionsMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool OptionsMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(ProfileMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool ProfileMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(ResultsMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool ResultsMenu_GetInput() => EnableUIInput;
+
+    [HarmonyPatch(typeof(LevelSelectMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool LevelSelectMenu_GetInput() => EnableUIInput;
+    
+    [HarmonyPatch(typeof(PauseMenu), "GetInput")]
+    [HarmonyPrefix]
+    private static bool PauseMenu_GetInput() => EnableUIInput;
+
+    #endregion
 }
