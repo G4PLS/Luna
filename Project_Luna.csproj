@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Luna</AssemblyName>
-    <Description>My first plugin</Description>
-    <Version>0.2</Version>
+    <Description>A Libary to make Lunisitce modding easier</Description>
+    <Version>0.4</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
@@ -19,9 +19,7 @@
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
   </ItemGroup>
-
-
-
+  
   <ItemGroup>
     <None Remove="Images\GameLogo.png" />
   </ItemGroup>
@@ -32,6 +30,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +38,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -387,6 +387,10 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>Lib\UnityEngine.XRModule.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Project_Luna.sln" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

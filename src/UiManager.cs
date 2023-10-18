@@ -32,11 +32,7 @@ public static class UiManager
     public static UIState CurrentUIState
     {
         get => _currentUIState;
-        set
-        {
-            _currentUIState = value;
-            Console.WriteLine(value.ToString());
-        }
+        set => _currentUIState = value;
     }
     public static bool EnableUIInput { get; set; } = true;
     
@@ -56,6 +52,11 @@ public static class UiManager
                 ChangeMenuState(menu.Value, false);
         }
     }
+    /// <summary>
+    /// Refreshes all the Menus.
+    /// Sets the Current UI State and then Refreshes the UI
+    /// </summary>
+    /// <param name="state">The UI State that should be set</param>
     public static void RefreshMenus(UIState state)
     {
         CurrentUIState = state;
@@ -122,9 +123,7 @@ public static class UiManager
             {UIState.CharacterSelect, Controller.characterSelectMenu}, //CHARACTER SELECT MENU
             {UIState.LevelSelect, Controller.levelSelectMenu}, //LEVEL SELECT MENU
         };
-        
-        Console.WriteLine(Controller.pauseMenu);
-        
+
         var image = new Texture2D(512, 512);
         image.LoadImage(Resource.GameLogo);
 
@@ -163,6 +162,16 @@ public static class UiManager
     [HarmonyPatch(typeof(OptionsMenu), "OnEnable")]
     [HarmonyPostfix]
     private static void OptionsMenu_OnEnable() => CurrentUIState = UIState.Options;
+
+    //The real Pause Menu
+    //Gets triggered when the Player Resumes the actual mission
+    [HarmonyPatch(typeof(PauseMenu), "OnUIPause")]
+    [HarmonyPostfix]
+    private static void PauseMenu_OnUIPause()
+    {
+        if (Game.GameState == GameState.Mission)
+            CurrentUIState = UIState.Mission;
+    }
 
     [HarmonyPatch(typeof(ProfileMenu), "OnEnable")]
     [HarmonyPostfix]

@@ -784,6 +784,9 @@ namespace Luna
                 Controller = null;
         }
 
+        /// <summary>
+        /// Resets all the velocity that the player has
+        /// </summary>
         public static void ResetVelocityState() => Controller?.ResetVelocityState();
         public static void ResetHitboxTime() => Controller?.ResetHitboxTime();
         public static void ResetCoyoteTime() => Controller?.ResetCoyoteTime();

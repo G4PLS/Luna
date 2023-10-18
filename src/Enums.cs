@@ -20,6 +20,6 @@
         Stage7_ActX = 14,
         Tutorial = 15,
         StageT = 16,
-        StageH = 17
+        StageH = 17,
     }
 }

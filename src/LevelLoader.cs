@@ -5,7 +5,6 @@ namespace Luna
 {
     public static class LevelLoader
     {
-        
         private static LevelSelectMenu _controller;
 
         public delegate void LevelEnd(Level currentLevel);
@@ -23,26 +22,6 @@ namespace Luna
         /// </summary>
         public static LevelEnd OnShowResults;
 
-        /*
-        public delegate void TriggerEnter(Level currentLevel);
-        /// <summary>
-        /// Gets triggered after the player enters a goal
-        /// </summary>
-        public static event TriggerEnter OnGoalEntered;
-
-        public delegate void SaveRanks(Level currentLevel);
-        /// <summary>
-        /// Gets triggered when the Moon Boss gets defeated
-        /// </summary>
-        public static event SaveRanks OnSaveRanks;
-
-        public delegate void ShowResults(Level currentLevel);
-        /// <summary>
-        /// Gets triggered when the Result Screen gets shown
-        /// </summary>
-        public static event ShowResults OnShowResults;
-        */
-
         public static void LoadLevel(Level level)
         {
             if(Game.GameState != GameState.Load && level != Level.None)
@@ -54,6 +33,9 @@ namespace Luna
                 _controller.StartLevel(levelID);
         }
 
+        /// <summary>
+        /// Loads the next Level in the Level Sequence
+        /// </summary>
         public static void LoadNextLevel()
         {
             if (Game.GameState == GameState.Load) return;
@@ -62,7 +44,9 @@ namespace Luna
             if (Enum.IsDefined(typeof(Level), nextLevel))
                 LoadLevel(nextLevel);
         }
-
+        /// <summary>
+        /// Loads the Previous level in the level Sequence
+        /// </summary>
         public static void LoadPreviousLevel()
         {
             if (Game.GameState == GameState.Load) return;
@@ -83,7 +67,7 @@ namespace Luna
                 return (Level) GameManager.Instance.currentLevel;
             return Level.None;
             
-            
+            /*
             if(id == -1)
             {
                 if (GameManager.Instance.gameState == GameState.Mission && Enum.IsDefined(typeof(Level), GameManager.Instance.currentLevel))
@@ -93,7 +77,12 @@ namespace Luna
             if (GameManager.Instance.gameState == GameState.Mission && Enum.IsDefined(typeof(Level), id))
                 return (Level)GameManager.Instance.currentLevel;
             return Level.None;
+            */
         }
+        /// <summary>
+        /// Returns the Current Level
+        /// </summary>
+        /// <returns>The Current Level</returns>
         public static Level GetCurrentLevel()
         {
             if (Game.GameState == GameState.Mission &&
